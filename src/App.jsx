@@ -11,7 +11,6 @@ import PlayListDetail from "./components/PlayListDetail/PlayListDetail.jsx";
 import PlayListEdit from "./components/PlayListEdit/PlayListEdit.jsx";
 import PlayListList from "./components/PlayListList/PlayListList.jsx";
 import MusicLibrary from "./components/MusicLibrary/MusicLibrary.jsx";
-import PlayListDetail from "./components/PlayListDetail/PlayListDetail.jsx";
 
 const App = () => {
   const { user } = useContext(UserContext);

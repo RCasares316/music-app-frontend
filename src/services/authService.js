@@ -3,7 +3,7 @@ import api from "./apiConfig.js";
 export const signUp = async (formData) => {
   try {
     const { data } = await api.post("/auth/sign-up", formData);
-
+    console.log(data);
     if (data.err) {
       throw new Error(data.err);
     }

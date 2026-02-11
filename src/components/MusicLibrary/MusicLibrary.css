@@ -1,0 +1,8 @@
+.tracks-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tracks-card {
+  width: 300px;
+}
