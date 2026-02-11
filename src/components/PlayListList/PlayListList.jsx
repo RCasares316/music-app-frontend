@@ -17,21 +17,30 @@ const PlayListList = () => {
     loadPlaylists();
   }, []);
 
+  /////////////////////////////the Link can go back to Dashboard instead of tracks, but will we need the PlaylistCreate page?
+
   return (
     <main>
-      {playlists.map((playlist) => (
+      {playlist.length === 0 ? (
+        <Link to="/tracks">                 
+          <button>Create Playlist</button>
+        </Link>
+      ):(
+
+      playlists.map((playlist) => (
         <Link key={playlist._id} to={`/playlists/${playlist._id}`}>
           <article>
             <h2>{playlist.name}</h2>
             {playlist.img && (
               <img src={playlist.img} alt={playlist.name} />
             )}
-
           </article>
         </Link>
-      ))}
-    </main>
-  );
+      ))
+
+    )}
+  </main>
+);
 };
 
 export default PlayListList;
