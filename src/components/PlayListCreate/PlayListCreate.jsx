@@ -1,9 +1,29 @@
-import React from 'react'
-
+import React from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router";
+////Do we need this page if its in the dashboard
 const PlayListCreate = () => {
-  return (
-    <div>PlayListCreate</div>
-  )
-}
+  const [formData, setFormData] = useState({
+    name: "",
+    img: "",
+  });
 
-export default PlayListCreate
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await createPlaylist(formData);
+    navigate("/playlists");
+  };
+  return <main></main>;
+};
+
+export default PlayListCreate;

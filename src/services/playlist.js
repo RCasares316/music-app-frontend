@@ -8,3 +8,22 @@ export const getPlaylist = async (playlistId) => {
     console.log(error);
   }
 };
+
+export const getPlaylists = async () => {
+  try {
+    const { data }= await api.get("/playlist")
+    return data
+  } catch (error) {
+    console.log(error)
+  }
+}
+//playlistID and track ID
+
+export const addTrackToPlaylist = async (playlistId, trackId) => {
+  try {
+    const { data } = await api.put(`/playlist/${playlistId}/tracks/${trackId}`);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};

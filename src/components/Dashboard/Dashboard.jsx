@@ -1,24 +1,25 @@
 import { useContext, useState, useEffect } from "react";
-import { getUsers } from "../../services/userService.js";
 import { UserContext } from "../../contexts/UserContext.jsx";
 
 const Dashboard = () => {
-  const [users, setUsers] = useState([]);
-
   const { user } = useContext(UserContext);
-
-  const fetchUsers = async () => {
-    try {
-      const fetchedUsers = await getUsers();
-      setUsers(fetchedUsers);
-    } catch (error) {
-      console.log(error);
-    }
+  const [formData, setFormData] = useState({
+    name: "",
+    img: "",
+  });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
-  useEffect(() => {
-    fetchUsers();
-  }, []);
+const handleSubmit = async (e) =>{
+  e.preventDefault();
+  await createPlaylist(formData);
+  setFormData({ name:"", img: ""});
+}
 
   return (
     <main>
@@ -26,11 +27,23 @@ const Dashboard = () => {
       <p>
         This is the dashboard page where you can see a list of all the users.
       </p>
-      <ul>
-        {users.map((userData) => (
-          <li key={userData._id}>{userData.username}</li>
-        ))}
-      </ul>
+      <div>
+        <h2>Create a Playlist</h2>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="name-input">Playlist Name</label>
+          <input
+            type="text"
+            name="name"
+            id="name-input"
+            value={formData.name}
+            onChange={handleChange}
+          />
+          <label htmlFor="img-input">Image URL</label>
+          <input type="text" name="img" id="img-input" value={formData.img} onChange={handleChange}/>
+          <button type="submit">Create</button>
+        </form>
+        <h2>Recent Playlists</h2>
+      </div>
     </main>
   );
 };
