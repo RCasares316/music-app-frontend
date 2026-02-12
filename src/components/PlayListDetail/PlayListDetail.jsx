@@ -22,8 +22,6 @@ const PlayListDetail = () => {
     return streamUrl.split("tracks:")[1].split("/")[0];
   };
 
-  // [TBU] - Add the remove from playlist functionality
-
   return (
     <div>
       <h1>{playlist.name}</h1>
@@ -35,15 +33,9 @@ const PlayListDetail = () => {
             controls
             src={`${import.meta.env.VITE_BACK_END_SERVER_URL}/tracks/${extractTrackId(track.streamUrl)}`}
           ></audio>
-          {console.log("TRACK OBJECT:", track)}
-          {console.log("STREAM URL:", track.streamUrl)}
-          {console.log(
-            `FINAL AUDIO SRC:, ${import.meta.env.VITE_BACK_END_SERVER_URL}/tracks/${extractTrackId(track.streamUrl)}`,
-          )}
           <div>
             <h3>{track.title}</h3>
             <p>{track.artist}</p>
-            <button>Remove from Playlist</button>
           </div>
         </div>
       ))}
