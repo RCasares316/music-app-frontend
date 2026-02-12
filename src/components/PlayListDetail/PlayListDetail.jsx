@@ -17,16 +17,16 @@ const PlayListDetail = () => {
   }, [playlistId]);
 
   const extractTrackId = (streamUrl) => {
+    if (!streamUrl) return "";
+
     return streamUrl.split("tracks:")[1].split("/")[0];
   };
-
-  // [TBU] - Add the remove from playlist functionality
 
   return (
     <div>
       <h1>{playlist.name}</h1>
       <img src={playlist.img} alt={playlist.name} />
-      {playlist.tracks.map((track) => (
+      {playlist.tracks?.map((track) => (
         <div key={track._id} className="tracks-card">
           <img src={track.artwork} alt={track.title} />
           <audio
@@ -36,7 +36,6 @@ const PlayListDetail = () => {
           <div>
             <h3>{track.title}</h3>
             <p>{track.artist}</p>
-            <button>Remove from Playlist</button>
           </div>
         </div>
       ))}
