@@ -1,6 +1,8 @@
 import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../../contexts/UserContext.jsx";
 import { createPlaylist } from "../../services/playlist.js";
+import "./Dashboard.css";
+
 
 const Dashboard = () => {
   const { user } = useContext(UserContext);
@@ -23,14 +25,18 @@ const handleSubmit = async (e) =>{
 }
 
   return (
-    <main>
+  <main className="dashboard-page">
+    <div className="dashboard-header">
       <h1>Welcome, {user.username}</h1>
-      <p>
-        This is the dashboard page where you can see a list of all the users.
-      </p>
-      <div>
+      <p>Manage your playlists and start creating new vibes 🎵</p>
+    </div>
+
+    <div className="dashboard-content">
+
+      <div className="dashboard-card">
         <h2>Create a Playlist</h2>
-        <form onSubmit={handleSubmit}>
+
+        <form onSubmit={handleSubmit} className="playlist-form">
           <label htmlFor="name-input">Playlist Name</label>
           <input
             type="text"
@@ -39,14 +45,32 @@ const handleSubmit = async (e) =>{
             value={formData.name}
             onChange={handleChange}
           />
+
           <label htmlFor="img-input">Image URL</label>
-          <input type="text" name="img" id="img-input" value={formData.img} onChange={handleChange}/>
-          <button type="submit">Create</button>
+          <input
+            type="text"
+            name="img"
+            id="img-input"
+            value={formData.img}
+            onChange={handleChange}
+          />
+
+          <button type="submit">Create Playlist</button>
         </form>
-        <h2>Recent Playlists</h2>
       </div>
-    </main>
-  );
+
+      <div className="dashboard-card">
+        <h2>Recent Playlists</h2>
+        <p className="empty-message">
+          Your playlists will appear here.
+        </p>
+      </div>
+
+    </div>
+  </main>
+);
+
+  ;
 };
 
 export default Dashboard;

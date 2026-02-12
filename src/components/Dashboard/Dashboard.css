@@ -1,0 +1,108 @@
+/* DASHBOARD PAGE */
+
+.dashboard-page {
+  min-height: 100vh;
+  padding: 80px;
+  background: linear-gradient(to bottom, #121212, #0f0f0f);
+  color: white;
+}
+
+/* HEADER */
+
+.dashboard-header {
+  margin-bottom: 50px;
+}
+
+.dashboard-header h1 {
+  font-size: 2.8rem;
+  margin-bottom: 10px;
+}
+
+.dashboard-header p {
+  opacity: 0.7;
+}
+
+/* CONTENT LAYOUT */
+
+.dashboard-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 40px;
+}
+
+/* CARD STYLE */
+
+.dashboard-card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 40px;
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+  transition: 0.3s ease;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-5px);
+}
+
+/* FORM */
+
+.playlist-form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.playlist-form label {
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.playlist-form input {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: #1f1f1f;
+  color: white;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+.playlist-form input:focus {
+  background: #2a2a2a;
+  box-shadow: 0 0 0 2px #1db954;
+}
+
+.playlist-form button {
+  margin-top: 25px;
+  padding: 12px;
+  border-radius: 30px;
+  border: none;
+  background: #1db954;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.playlist-form button:hover {
+  background: #17a74a;
+  transform: translateY(-2px);
+}
+
+/* EMPTY MESSAGE */
+
+.empty-message {
+  margin-top: 20px;
+  opacity: 0.6;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+  .dashboard-page {
+    padding: 40px 20px;
+  }
+}
