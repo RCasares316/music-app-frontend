@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { getTracks } from "../../services/tracks.js";
+import { addTrackToPlaylist } from "../../services/playlist.js";
 import "./MusicLibrary.css";
 
 const MusicLibrary = () => {
@@ -20,10 +21,6 @@ const MusicLibrary = () => {
     return streamUrl.split("tracks:")[1].split("/")[0];
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-  };
-
   return (
     <div>
       <h1>All tracks</h1>
@@ -38,9 +35,7 @@ const MusicLibrary = () => {
             <div>
               <h3>{track.title}</h3>
               <p>{track.artist}</p>
-              <form onSubmit={handleSubmit}>
-                <button type="submit">Add to Playlist</button>
-              </form>
+              <button type="submit">Add to Playlist</button>
             </div>
           </div>
         ))}

@@ -17,3 +17,13 @@ export const getPlaylists = async () => {
     console.log(error)
   }
 }
+//playlistID and track ID
+
+export const addTrackToPlaylist = async (playlistId, trackId) => {
+  try {
+    const { data } = await api.put(`/playlist/${playlistId}/tracks/${trackId}`);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
