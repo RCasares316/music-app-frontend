@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
-import { getPlaylists } from "../../services/playlist.js";
+import { getPlaylist } from "../../services/playlist.js";
 
 const PlayListList = () => {
   const [playlists, setPlaylists] = useState([]);
@@ -22,25 +22,21 @@ const PlayListList = () => {
   return (
     <main>
       {playlist.length === 0 ? (
-        <Link to="/tracks">                 
+        <Link to="/tracks">
           <button>Create Playlist</button>
         </Link>
-      ):(
-
-      playlists.map((playlist) => (
-        <Link key={playlist._id} to={`/playlists/${playlist._id}`}>
-          <article>
-            <h2>{playlist.name}</h2>
-            {playlist.img && (
-              <img src={playlist.img} alt={playlist.name} />
-            )}
-          </article>
-        </Link>
-      ))
-
-    )}
-  </main>
-);
+      ) : (
+        playlists.map((playlist) => (
+          <Link key={playlist._id} to={`/playlists/${playlist._id}`}>
+            <article>
+              <h2>{playlist.name}</h2>
+              {playlist.img && <img src={playlist.img} alt={playlist.name} />}
+            </article>
+          </Link>
+        ))
+      )}
+    </main>
+  );
 };
 
 export default PlayListList;
