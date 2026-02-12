@@ -3,7 +3,6 @@ import { Routes, Route } from "react-router";
 import { UserContext } from "./contexts/UserContext.jsx";
 import NavBar from "./components/NavBar/NavBar.jsx";
 import SignUpForm from "./components/SignUpForm/SignUpForm.jsx";
-import SignInForm from "./components/SignInForm/SignInForm.jsx";
 import Landing from "./components/Landing/Landing.jsx";
 import Dashboard from "./components/Dashboard/Dashboard.jsx";
 import PlayListCreate from "./components/PlayListCreate/PlayListCreate.jsx";
@@ -21,7 +20,6 @@ const App = () => {
       <Routes>
         <Route path="/" element={user ? <Dashboard /> : <Landing />} />
         <Route path="/sign-up" element={<SignUpForm />} />
-        <Route path="/sign-in" element={<SignInForm />} />
         <Route path="/playlist" element={<PlayListList />} />
         <Route path="/playlist/new" element={<PlayListCreate />} />
         <Route path="/playlist/:playlistId" element={<PlayListDetail />} />
