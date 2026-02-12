@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
-import { getPlaylists } from "../../services/playlist.js";
+// import { getPlaylists } from "../../services/playlist.js";
 
 const PlayListList = () => {
   const [playlists, setPlaylists] = useState([]);
