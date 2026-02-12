@@ -17,6 +17,8 @@ const PlayListDetail = () => {
   }, [playlistId]);
 
   const extractTrackId = (streamUrl) => {
+    if (!streamUrl) return "";
+
     return streamUrl.split("tracks:")[1].split("/")[0];
   };
 
@@ -26,13 +28,18 @@ const PlayListDetail = () => {
     <div>
       <h1>{playlist.name}</h1>
       <img src={playlist.img} alt={playlist.name} />
-      {playlist.tracks.map((track) => (
+      {playlist.tracks?.map((track) => (
         <div key={track._id} className="tracks-card">
           <img src={track.artwork} alt={track.title} />
           <audio
             controls
             src={`${import.meta.env.VITE_BACK_END_SERVER_URL}/tracks/${extractTrackId(track.streamUrl)}`}
           ></audio>
+          {console.log("TRACK OBJECT:", track)}
+          {console.log("STREAM URL:", track.streamUrl)}
+          {console.log(
+            `FINAL AUDIO SRC:, ${import.meta.env.VITE_BACK_END_SERVER_URL}/tracks/${extractTrackId(track.streamUrl)}`,
+          )}
           <div>
             <h3>{track.title}</h3>
             <p>{track.artist}</p>
