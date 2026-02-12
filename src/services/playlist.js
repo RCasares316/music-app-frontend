@@ -37,3 +37,31 @@ export const addTrackToPlaylist = async (playlistId, trackId) => {
     console.log(error);
   }
 };
+export const removeTrackToPlaylist = async (playlistId, trackId) => {
+  try {
+    const { data } = await api.delete(
+      `/playlist/${playlistId}/track/${trackId}`,
+    );
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const updatePlaylist = async (playlistId, playlistData) => {
+  try {
+    const { data } = await api.put(`/playlist/${playlistId}`, playlistData);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const deletePlaylist = async (playlistId) => {
+  try {
+    const { data } = await api.delete(`/playlist/${playlistId}`, playlistData);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
