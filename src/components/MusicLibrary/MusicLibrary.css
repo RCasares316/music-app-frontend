@@ -5,4 +5,9 @@
 
 .tracks-card {
   width: 300px;
+  gap: 16px;
+  margin-bottom: 16px;
+  align-items: "center";
+  border: "1px solid gray";
+  padding: 16px;
 }
