@@ -262,6 +262,17 @@ body {
   text-shadow: 0 0 30px rgba(29, 185, 84, 0.4);
 }
 
+.music-bg-global {
+  position: fixed;      /* stays locked to screen */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: -1;          /* behind everything */
+}
+
+
 /* NOTES */
 .g-note1 { top: 10%; left: 5%; }
 .g-note2 { top: 80%; left: 85%; }
