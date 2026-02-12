@@ -24,7 +24,7 @@ const PlayListCreate = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await createPlaylist(formData);
-    navigate("/playlists");
+    navigate("/playlist");
   };
   return (
     <main className="playlist-create-page">
