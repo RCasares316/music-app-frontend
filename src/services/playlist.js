@@ -59,7 +59,7 @@ export const updatePlaylist = async (playlistId, playlistData) => {
 
 export const deletePlaylist = async (playlistId) => {
   try {
-    const { data } = await api.delete(`/playlist/${playlistId}`, playlistData);
+    const { data } = await api.delete(`/playlist/${playlistId}`);
     return data;
   } catch (error) {
     console.log(error);

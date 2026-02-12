@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router";
+import { Link, useNavigate, useParams } from "react-router";
 import {
   updatePlaylist,
   getPlaylist,
@@ -9,14 +9,24 @@ import {
 
 const PlayListEdit = () => {
   const [playlist, setPlaylist] = useState({});
+  const [isEditingName, setIsEditingName] = useState(false);
+  const [isEditingImage, setIsEditingImage] = useState(false);
+  const [editForm, setEditForm] = useState({
+    name: "",
+    img: "",
+  });
 
   const navigate = useNavigate();
-
   const { playlistId } = useParams();
 
   const fetchPlaylist = async () => {
     const playlistData = await getPlaylist(playlistId);
     setPlaylist(playlistData);
+
+    setEditForm({
+      name: playlistData.name,
+      img: playlistData.img,
+    });
   };
 
   useEffect(() => {
@@ -38,10 +48,60 @@ const PlayListEdit = () => {
     }));
   };
 
+  const handleChange = (e) => {
+    setEditForm({
+      ...editForm,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSave = async () => {
+    const updated = await updatePlaylist(playlistId, editForm);
+
+    setPlaylist((prev) => ({
+      ...prev,
+      name: updated.name,
+      img: updated.img,
+    }));
+    setIsEditingName(false);
+    setIsEditingImage(false);
+  };
+
   return (
     <div>
-      <h1>{playlist.name}</h1>
-      <img src={playlist.img} alt={playlist.name} />
+      {isEditingName ? (
+        <>
+          <input
+            type="text"
+            name="name"
+            value={editForm.name}
+            onChange={handleChange}
+          />
+          <button onClick={handleSave}>Save Name</button>
+        </>
+      ) : (
+        <h1 onClick={() => setIsEditingName(true)}>{playlist.name}</h1>
+      )}
+      {isEditingImage ? (
+        <div>
+          <input
+            type="text"
+            name="img"
+            value={editForm.img}
+            onChange={handleChange}
+          />
+          <button type="button" onClick={handleSave}>
+            Save Image
+          </button>
+        </div>
+      ) : (
+        <img
+          src={playlist.img}
+          alt={playlist.name}
+          onClick={() => setIsEditingImage(true)}
+          style={{ cursor: "pointer" }}
+        />
+      )}
       {playlist.tracks?.map((track) => (
         <div key={track._id} className="tracks-card">
           <img src={track.artwork} alt={track.title} />
@@ -58,6 +118,9 @@ const PlayListEdit = () => {
           </div>
         </div>
       ))}
+      <Link to="/playlist">
+      <button>Update Playlist</button>
+      </Link>
     </div>
   );
 };

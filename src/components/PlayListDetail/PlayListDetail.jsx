@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router";
-import { getPlaylist } from "../../services/playlist.js";
+import { useParams, Link, useNavigate } from "react-router";
+import { deletePlaylist, getPlaylist } from "../../services/playlist.js";
 
 const PlayListDetail = () => {
   const [playlist, setPlaylist] = useState({});
+  const navigate = useNavigate();
 
   const { playlistId } = useParams();
 
@@ -20,6 +21,11 @@ const PlayListDetail = () => {
     if (!streamUrl) return "";
 
     return streamUrl.split("tracks:")[1].split("/")[0];
+  };
+
+  const handleDelete = async () => {
+    await deletePlaylist(playlistId);
+    navigate("/playlist");
   };
 
   return (
@@ -40,8 +46,9 @@ const PlayListDetail = () => {
         </div>
       ))}
       <Link to={`/playlist/${playlistId}/edit`}>
-      <button>Edit Playlist</button>
+        <button>Edit Playlist</button>
       </Link>
+      <button onClick={handleDelete}>Delete Playlist</button>
     </div>
   );
 };
