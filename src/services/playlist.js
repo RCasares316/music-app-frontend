@@ -8,3 +8,12 @@ export const getPlaylist = async (playlistId) => {
     console.log(error);
   }
 };
+
+export const getPlaylists = async () => {
+  try {
+    const { data }= await api.get("/playlist")
+    return data
+  } catch (error) {
+    console.log(error)
+  }
+}
