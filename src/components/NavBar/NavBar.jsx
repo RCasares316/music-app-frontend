@@ -19,6 +19,9 @@ const NavBar = () => {
             <Link to="/">Dashboard</Link>
           </li>
           <li>
+            <Link to="/playlist">All Playlists</Link>
+          </li>
+          <li>
             <Link to="/tracks">Tracks</Link>
           </li>
           <li onClick={handleSignOut}>Sign Out</li>

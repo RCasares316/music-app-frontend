@@ -1,4 +1,5 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
+import { getPlaylists } from "../services/playlist.js";
 
 const UserContext = createContext();
 
@@ -12,9 +13,19 @@ const getUserFromToken = () => {
 
 const UserProvider = ({ children }) => {
   const [user, setUser] = useState(getUserFromToken());
+  const [playlists, setPlaylists] = useState([]);
+  // [TBU] - Refresh playlists when tracks added/removed - toggle
+
+  useEffect(() => {
+    const fetchPlaylists = async () => {
+      const playlistsData = await getPlaylists();
+      setPlaylists(playlistsData);
+    };
+    fetchPlaylists();
+  }, []);
 
   return (
-    <UserContext.Provider value={{ user, setUser }}>
+    <UserContext.Provider value={{ user, setUser, playlists }}>
       {children}
     </UserContext.Provider>
   );
