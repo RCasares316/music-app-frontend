@@ -1,5 +1,6 @@
 import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../../contexts/UserContext.jsx";
+import { createPlaylist } from "../../services/playlist.js";
 
 const Dashboard = () => {
   const { user } = useContext(UserContext);
