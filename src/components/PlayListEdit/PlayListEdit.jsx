@@ -6,6 +6,7 @@ import {
   deletePlaylist,
   removeTrackToPlaylist,
 } from "../../services/playlist.js";
+import "./PlayListEdit.css"
 
 const PlayListEdit = () => {
   const [playlist, setPlaylist] = useState({});

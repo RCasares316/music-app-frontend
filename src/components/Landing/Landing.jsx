@@ -6,6 +6,16 @@ const Landing = () => {
     <div className="landing">
       {/* HERO SECTION */}
       <section className="hero">
+        {/* GLOBAL MUSIC BACKGROUND */}
+        <div className="music-bg-hero">
+          <span className="note g-note1">♪</span>
+          <span className="note g-note2">♫</span>
+          <span className="note g-note3">♬</span>
+          <span className="headphones g-headphones">🎧</span>
+          <span className="mic g-mic1">🎤</span>
+          <span className="mic g-mic2">🎤</span>
+        </div>
+
         {/* LEFT SIDE */}
         <div className="hero-left">
           <h1>Feel The Music</h1>
@@ -50,23 +60,6 @@ const Landing = () => {
             </div>
           ))}
         </div>
-
-        <div className="landing">
-
-  {/* GLOBAL MUSIC BACKGROUND */}
-  <div className="music-bg-global">
-    <span className="note g-note1">♪</span>
-    <span className="note g-note2">♫</span>
-    <span className="note g-note3">♬</span>
-    <span className="headphones g-headphones">🎧</span>
-    <span className="mic g-mic1">🎤</span>
-    <span className="mic g-mic2">🎤</span>
-  </div>
-
-  {/* HERO + REST OF PAGE */}
-  ...
-</div>
-
       </section>
 
       {/* FOOTER */}
@@ -74,8 +67,6 @@ const Landing = () => {
         <p>© 2026 Your Music App. All rights reserved.</p>
       </footer>
     </div>
-
-    
   );
 };
 

@@ -1,0 +1,257 @@
+/* PLAYLIST CREATE PAGE */
+
+.playlist-create-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 20px;
+  background: linear-gradient(to right, #1db954, #121212);
+  color: white;
+}
+
+/* GLASS CARD */
+
+.playlist-create-card {
+  width: 420px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 40px;
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+}
+
+.playlist-create-card h1 {
+  margin-bottom: 25px;
+  font-size: 2rem;
+}
+
+/* FORM */
+
+.playlist-create-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.playlist-create-form label {
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.playlist-create-form input {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: #1f1f1f;
+  color: white;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+.playlist-create-form input:focus {
+  background: #2a2a2a;
+  box-shadow: 0 0 0 2px #1db954;
+}
+
+/* BUTTONS */
+
+.playlist-create-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.playlist-create-buttons button {
+  flex: 1;
+  padding: 12px;
+  border-radius: 30px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+/* PRIMARY BUTTON */
+
+.playlist-create-buttons button[type="submit"] {
+  background: #1db954;
+  color: white;
+}
+
+.playlist-create-buttons button[type="submit"]:hover {
+  background: #17a74a;
+  transform: translateY(-2px);
+}
+
+/* CANCEL BUTTON */
+
+.cancel-btn {
+  background: transparent;
+  color: #ccc;
+  border: 1px solid #333;
+}
+
+.cancel-btn:hover {
+  color: white;
+  border-color: #555;
+}
+
+.dashboard-container {
+  position: relative;
+  min-height: 100vh;
+  padding: 60px 20px;
+  background:
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(29, 185, 84, 0.25),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 80% 70%,
+      rgba(29, 185, 84, 0.15),
+      transparent 50%
+    ),
+    #0d0d0d;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dashboard-card {
+  background: rgba(20, 20, 20, 0.85);
+  backdrop-filter: blur(15px);
+  padding: 20px;
+  border-radius: 20px;
+  width: 45%;
+  max-width: 500px;
+  box-shadow: 0 0 40px rgba(29, 185, 84, 0.25);
+  z-index: 2;
+}
+
+.dashboard-card h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #1db954;
+}
+
+.playlist-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.playlist-form input {
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: #1a1a1a;
+  color: white;
+  outline: none;
+  transition: 0.3s;
+}
+
+.playlist-form input:focus {
+  box-shadow: 0 0 15px rgba(29, 185, 84, 0.6);
+}
+
+.playlist-form button {
+  margin-top: 10px;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: #1db954;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.playlist-form button:hover {
+  background: #17a74a;
+  transform: scale(1.05);
+}
+
+.music-bg-global {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* New */
+/* SPINNING VINYL WITH GOLD CENTER AND TEXT */
+
+.vinyl-bg {
+  position: fixed;
+  top: 70%;
+  left: 85%;
+  width: 900px;
+  height: 900px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+
+  /* Vinyl grooves */
+  background: repeating-radial-gradient(
+    circle at center,
+    #111 0px,
+    #111 2px,
+    #0a0a0a 4px,
+    #111 6px
+  );
+
+  box-shadow:
+    inset 0 0 120px rgba(0, 0, 0, 0.9),
+    0 0 60px rgba(29, 185, 84, 0.1);
+
+  border: 1px solid #111;
+  animation: spinVinyl 20s linear infinite; /* constant rotation */
+  /* opacity: 0.25; */
+}
+
+/* Gold center label */
+.vinyl-bg::before {
+  content: "MUSIC APP • 24/7 VIBES • MUSIC APP • 24/7 VIBES •";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 160px;
+  height: 160px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at center,
+    #ffd700 0%,
+    #b8860b 100%
+  ); /* gold gradient */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  font-weight: bold;
+  font-size: 12px;
+  text-align: center;
+  line-height: 1.2;
+  padding: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  overflow: hidden;
+}
+
+/* Old */
+
+@keyframes spinVinyl {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}

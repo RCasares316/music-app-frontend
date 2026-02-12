@@ -12,7 +12,13 @@ body {
 
 .landing {
   width: 100%;
+  position: relative;
+  overflow-x: hidden;
 }
+
+/* =========================
+   HERO
+========================= */
 
 .hero {
   width: 100%;
@@ -22,6 +28,72 @@ body {
   justify-content: space-between;
   padding: 0 80px;
   background: linear-gradient(to right, #1db954, #121212);
+
+  /* IMPORTANT: keeps floating icons scoped to hero */
+  position: relative;
+  overflow: hidden;
+}
+
+/* HERO MUSIC BACKGROUND (scoped) */
+.music-bg-hero {
+  position: absolute; /* scoped to hero */
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0; /* behind hero content */
+}
+
+.music-bg-hero .note,
+.music-bg-hero .headphones,
+.music-bg-hero .mic {
+  position: absolute;
+  opacity: 0.5;
+  animation: float 18s infinite ease-in-out;
+  text-shadow: 0 0 30px rgba(29, 185, 84, 0.4);
+}
+
+/* NOTES */
+.g-note1 {
+  top: 10%;
+  left: 5%;
+}
+
+.g-note2 {
+  top: 80%;
+  left: 85%;
+}
+
+.g-note3 {
+  top: 75%;
+  left: 20%;
+}
+
+/* HEADPHONES */
+.g-headphones {
+  top: 30%;
+  right: 0%;
+  font-size: 5rem;
+}
+
+/* MICROPHONES */
+.g-mic1 {
+  top: 20%;
+  right: 15%;
+  font-size: 4.5rem;
+}
+
+.g-mic2 {
+  top: 65%;
+  left: 40%;
+  font-size: 4rem;
+}
+
+/* Make sure hero content sits above the floating icons */
+.hero-left,
+.hero-right {
+  position: relative;
+  z-index: 1;
 }
 
 /* LEFT SIDE */
@@ -96,6 +168,7 @@ body {
   background: #17a74a;
 }
 
+/* CTA */
 .cta-btn {
   width: 200px;
   padding: 14px;
@@ -113,7 +186,9 @@ body {
   transform: scale(1.05);
 }
 
-/* SECTIONS */
+/* =========================
+   SECTIONS
+========================= */
 
 .section {
   padding: 60px;
@@ -125,7 +200,6 @@ body {
 }
 
 /* PLAYLIST GRID */
-
 .playlist-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -153,7 +227,6 @@ body {
 }
 
 /* SONG LIST */
-
 .songs-list {
   display: flex;
   flex-direction: column;
@@ -196,7 +269,9 @@ body {
   opacity: 0.7;
 }
 
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
 
 .footer {
   padding: 40px;
@@ -205,7 +280,9 @@ body {
   opacity: 0.6;
 }
 
-/* RESPONSIVE */
+/* =========================
+   RESPONSIVE
+========================= */
 
 @media (max-width: 768px) {
   .hero h1 {
@@ -229,47 +306,16 @@ body {
   }
 }
 
-.landing {
-  position: relative;
-  overflow-x: hidden;
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
 }
-
-/* GLOBAL MUSIC BACKGROUND */
-.music-bg-global {
-  position: fixed; /* stays across full page */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Make sure all content sits above */
-.hero,
-.section,
-.footer {
-  position: relative;
-  z-index: 1;
-}
-
-/* Slightly slower animation for full page */
-.music-bg-global .note,
-.music-bg-global .headphones,
-.music-bg-global .mic {
-  opacity: 0.5;
-  animation: float 18s infinite ease-in-out;
-  text-shadow: 0 0 30px rgba(29, 185, 84, 0.4);
-}
-
-/* NOTES */
-.g-note1 { top: 10%; left: 5%; }
-.g-note2 { top: 80%; left: 85%; }
-.g-note3 { top: 75%; left: 20%; }
-
-/* HEADPHONES */
-.g-headphones { top: 30%; right: 0%; font-size: 5rem; }
-
-/* MICROPHONES */
-.g-mic1 { bottom: 80%; right: 15%; font-size: 4.5rem; }
-.g-mic2 { top: 65%; left: 40%; font-size: 4rem; }
