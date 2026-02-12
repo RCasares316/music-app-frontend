@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { UserContext } from "../../contexts/UserContext.jsx";
-import { useNavigate } from "react-router";
+import { useNavigate, Link } from "react-router";
 import { signIn } from "../../services/authService.js";
 
 const SignInForm = () => {
@@ -24,7 +24,7 @@ const SignInForm = () => {
     try {
       const signedInUser = await signIn(formData);
       setUser(signedInUser);
-      console.log("hiii");
+
       navigate("/");
     } catch (err) {
       setMessage(err.message);
@@ -62,7 +62,10 @@ const SignInForm = () => {
         </div>
         <div>
           <button type="submit">Sign In</button>
-          <button onClick={() => navigate("/")}>Cancel</button>
+          <p>
+            Don't have an account?
+            <Link to={"/sign-up"}> Register here</Link>
+          </p>
         </div>
       </form>
     </main>

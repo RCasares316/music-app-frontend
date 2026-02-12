@@ -1,0 +1,190 @@
+/* AUTH CARD (Sign In + Sign Up) */
+
+.hero-signup {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to right, #1db954, #121212);
+}
+
+.auth-card {
+  background: rgba(0, 0, 0, 0.65);
+  padding: 40px;
+  border-radius: 20px;
+  width: 360px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  color: white;
+}
+
+.auth-card h1 {
+  margin-bottom: 15px;
+  font-size: 1.8rem;
+}
+
+.auth-message {
+  color: #ff6b6b;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.auth-card form div {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-card label {
+  font-size: 0.85rem;
+  margin-bottom: 5px;
+  opacity: 0.8;
+}
+
+.auth-card input {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  background: #1f1f1f;
+  color: white;
+  transition: 0.3s ease;
+}
+
+.auth-card input:focus {
+  background: #2a2a2a;
+  box-shadow: 0 0 0 2px #1db954;
+}
+
+.auth-card button {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  margin-top: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.auth-card button[type="submit"] {
+  background: #1db954;
+  color: white;
+}
+
+.auth-card button[type="submit"]:hover {
+  background: #17a74a;
+  transform: translateY(-2px);
+}
+
+.auth-card button:disabled {
+  background: #444;
+  cursor: not-allowed;
+}
+
+.auth-card button:last-child {
+  background: transparent;
+  color: #ccc;
+}
+
+.auth-card button:last-child:hover {
+  color: white;
+}
+
+.hero-signup {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background Container */
+.music-bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* important */
+  z-index: 0;
+}
+
+/* Notes Base Style */
+.note,
+.headphones {
+  position: absolute;
+  font-size: 4rem;
+  opacity: 0.07;
+  animation: float 12s infinite ease-in-out;
+}
+
+/* Individual Placement */
+.note1 {
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.note2 {
+  top: 60%;
+  left: 20%;
+  animation-delay: 3s;
+}
+
+.note3 {
+  top: 40%;
+  right: 15%;
+  animation-delay: 6s;
+}
+
+.headphones {
+  bottom: 15%;
+  right: 10%;
+  font-size: 5rem;
+  animation-delay: 2s;
+}
+
+/* Floating Animation */
+@keyframes float {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-25px) rotate(10deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+/* Make content sit above background */
+.hero-left,
+.hero-right {
+  position: relative;
+  z-index: 1;
+}
+
+.note,
+.headphones {
+  position: absolute;
+  font-size: 4rem;
+  opacity: 0.50; /* brighter but still subtle */
+  animation: float 12s infinite ease-in-out;
+}
+
+.mic {
+  position: absolute;
+  font-size: 4.5rem;
+  opacity: 0.5;
+  animation: float 14s infinite ease-in-out;
+  text-shadow: 0 0 25px rgba(29, 185, 84, 0.5);
+}
+
+/* Position them nicely */
+.mic1 {
+  top: 15%;
+  right: 8%;
+  animation-delay: 4s;
+}
+
+.mic2 {
+  bottom: 10%;
+  left: 12%;
+  animation-delay: 7s;
+}
