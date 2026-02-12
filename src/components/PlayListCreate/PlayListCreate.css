@@ -123,9 +123,9 @@
 .dashboard-card {
   background: rgba(20, 20, 20, 0.85);
   backdrop-filter: blur(15px);
-  padding: 40px;
+  padding: 20px;
   border-radius: 20px;
-  width: 100%;
+  width: 45%;
   max-width: 500px;
   box-shadow: 0 0 40px rgba(29, 185, 84, 0.25);
   z-index: 2;
@@ -189,7 +189,7 @@
 
 .vinyl-bg {
   position: fixed;
-  top: 50%;
+  top: 70%;
   left: 85%;
   width: 900px;
   height: 900px;

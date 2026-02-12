@@ -40,7 +40,7 @@ const PlayListDetail = () => {
         </div>
       ))}
       <Link to={`/playlist/${playlistId}/edit`}>
-      <button>Edit Playlist</button>
+        <button>Edit Playlist</button>
       </Link>
     </div>
   );
