@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router";
+import { useParams, Link } from "react-router";
 import { getPlaylist } from "../../services/playlist.js";
 
 const PlayListDetail = () => {
@@ -39,6 +39,9 @@ const PlayListDetail = () => {
           </div>
         </div>
       ))}
+      <Link to={`/playlist/${playlistId}/edit`}>
+      <button>Edit Playlist</button>
+      </Link>
     </div>
   );
 };
