@@ -1,7 +1,26 @@
 import SignInForm from "../SignInForm/SignInForm.jsx";
 import "./Landing.css";
+import { getPlaylists } from "../../services/playlist.js";
+import { getTracks } from "../../services/tracks.js";
+import { useState, useEffect } from "react";
 
 const Landing = () => {
+  const [playlists, setPlaylists] = useState([]);
+  const [tracks, setTracks] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const playlistData = await getPlaylists();
+      playlistData.length = 6; // Cut array down to certain number of elements
+      const tracksData = await getTracks();
+      tracksData.length = 10; // Cut array down to certain number of elements
+      setPlaylists(playlistData);
+      setTracks(tracksData);
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div className="landing">
       {/* HERO SECTION */}
@@ -33,13 +52,22 @@ const Landing = () => {
 
       {/* RECENT PLAYLISTS */}
       <section className="section">
-        <h2 className="section-title">Preview a List of Songs</h2>
+        <h2 className="section-title">Preview a List of Playlists</h2>
         <div className="playlist-grid">
-          {[1, 2, 3, 4, 5, 6].map((item) => (
-            <div className="playlist-card" key={item}>
+          {playlists.map((playlist) => (
+            <div
+              className="playlist-card"
+              key={playlist._id}
+              style={{
+                backgroundImage: `url(${playlist.img})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
+              }}
+            >
               <div className="playlist-cover"></div>
-              <h3>Playlist {item}</h3>
-              <p>25 Songs</p>
+              <h3>Playlist {playlist.title}</h3>
+              <p>{playlist.tracks.length} Songs</p>
             </div>
           ))}
         </div>
@@ -49,14 +77,17 @@ const Landing = () => {
       <section className="section">
         <h2 className="section-title">Top 10 Songs</h2>
         <div className="songs-list">
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((num) => (
-            <div className="song-row" key={num}>
-              <span className="song-number">{num}</span>
+          {tracks.map((track, index) => (
+            <div className="song-row" key={track._id}>
+              <span className="song-number">{index + 1}</span>
               <div className="song-info">
-                <h4>Song Title {num}</h4>
-                <p>Artist Name</p>
+                <h4>{track.title}</h4>
+                <p>{track.artist}</p>
               </div>
-              <span className="song-duration">3:45</span>
+              <span className="song-duration">
+                {Math.floor(Math.floor(track.duration / 1000) / 60)}:
+                {Math.floor(track.duration / 1000) % 60}
+              </span>
             </div>
           ))}
         </div>
