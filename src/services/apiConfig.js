@@ -11,6 +11,7 @@ const api = axios.create({
   baseURL: `${import.meta.env.VITE_BACK_END_SERVER_URL}`,
 });
 
+// REQUEST Interceptor
 api.interceptors.request.use(
   async function (config) {
     const token = await getToken();
@@ -23,6 +24,30 @@ api.interceptors.request.use(
   },
   function (error) {
     console.log("Request error: ", error);
+    return Promise.reject(error);
+  },
+);
+
+// RESPONSE Interceptor
+api.interceptors.response.use(
+  function (response) {
+    return response;
+  },
+  function (error) {
+    const status = error.response?.status;
+
+    if (status === 401) {
+      console.log("Unauthorized — logging out user");
+
+      // 🔥 remove token safely
+      localStorage.removeItem("token");
+
+      // 🔥 prevent infinite redirect loop
+      if (window.location.pathname !== "/") {
+        window.location.href = "/";
+      }
+    }
+
     return Promise.reject(error);
   },
 );

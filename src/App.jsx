@@ -10,6 +10,7 @@ import PlayListDetail from "./components/PlayListDetail/PlayListDetail.jsx";
 import PlayListEdit from "./components/PlayListEdit/PlayListEdit.jsx";
 import PlayListList from "./components/PlayListList/PlayListList.jsx";
 import MusicLibrary from "./components/MusicLibrary/MusicLibrary.jsx";
+import NotFound from "./components/NotFound/NotFound.jsx";
 
 const App = () => {
   const { user } = useContext(UserContext);
@@ -25,6 +26,7 @@ const App = () => {
         <Route path="/playlist/:playlistId" element={<PlayListDetail />} />
         <Route path="/playlist/:playlistId/edit" element={<PlayListEdit />} />
         <Route path="/tracks" element={<MusicLibrary />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );
