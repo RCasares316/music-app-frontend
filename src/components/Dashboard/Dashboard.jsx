@@ -1,29 +1,10 @@
 import { useContext, useState, useEffect } from "react";
 import { Link } from "react-router";
 import { UserContext } from "../../contexts/UserContext.jsx";
-import { createPlaylist } from "../../services/playlist.js";
 import "./Dashboard.css";
 
 const Dashboard = () => {
   const { user, playlists } = useContext(UserContext);
-  // const [formData, setFormData] = useState({
-  //   name: "",
-  //   img: "",
-  // });
-
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
-  //   setFormData((prev) => ({
-  //     ...prev,
-  //     [name]: value,
-  //   }));
-  // };
-
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   await createPlaylist(formData);
-  //   setFormData({ name: "", img: "" });
-  // };
 
   return (
     <main className="dashboard-page">
@@ -33,35 +14,9 @@ const Dashboard = () => {
       </div>
 
       <div className="dashboard-content">
-        {/* <div className="dashboard-card">
-        <h2>Create a Playlist</h2>
-
-        <form onSubmit={handleSubmit} className="playlist-form">
-          <label htmlFor="name-input">Playlist Name</label>
-          <input
-            type="text"
-            name="name"
-            id="name-input"
-            value={formData.name}
-            onChange={handleChange}
-          />
-
-          <label htmlFor="img-input">Image URL</label>
-          <input
-            type="text"
-            name="img"
-            id="img-input"
-            value={formData.img}
-            onChange={handleChange}
-          />
-
-          <button type="submit">Create Playlist</button>
-        </form>
-      </div> */}
-
         <h2>Recent Playlists</h2>
         <div className="dashboard-card-container">
-          {playlists.map((playlist) => (
+          {playlists?.map((playlist) => (
             <div className="dashboard-card" key={playlist._id}>
               <Link to={`/playlist/${playlist._id}`}>
                 <h1>{playlist.name}</h1>

@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams, Link, useNavigate } from "react-router";
 import { deletePlaylist, getPlaylist } from "../../services/playlist.js";
+import { UserContext } from "../../contexts/UserContext.jsx";
 
 const PlayListDetail = () => {
   const [playlist, setPlaylist] = useState({});
@@ -24,9 +25,19 @@ const PlayListDetail = () => {
   };
 
   const handleDelete = async () => {
+    const confirmed = window.confirm(
+      "Are you sure you want to delete this playlist?",
+    );
+
+    if (!confirmed) return;
+
     await deletePlaylist(playlistId);
     navigate("/playlist");
   };
+
+  const { user } = useContext(UserContext);
+
+  const isOwner = playlist.owner?._id === user?._id;
 
   return (
     <div>
@@ -45,10 +56,14 @@ const PlayListDetail = () => {
           </div>
         </div>
       ))}
-      <Link to={`/playlist/${playlistId}/edit`}>
-        <button>Edit Playlist</button>
-      </Link>
-      <button onClick={handleDelete}>Delete Playlist</button>
+      {isOwner && (
+        <>
+          <Link to={`/playlist/${playlistId}/edit`}>
+            <button>Edit Playlist</button>
+          </Link>
+          <button onClick={handleDelete}>Delete Playlist</button>
+        </>
+      )}
     </div>
   );
 };

@@ -1,16 +1,19 @@
-import React from "react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { UserContext } from "../../contexts/UserContext.jsx";
 import { Link } from "react-router";
-import { getPlaylists} from "../../services/playlist.js";
+import { getPlaylists } from "../../services/playlist.js";
 import "./PlayListList.css";
 
 const PlayListList = () => {
-  const [playlists, setPlaylists] = useState([]);
+  const [allPlaylists, setAllPlaylists] = useState([]);
+
+  const { playlists } = useContext(UserContext);
+
   useEffect(() => {
     const loadPlaylists = async () => {
       try {
         const data = await getPlaylists();
-        setPlaylists(data);
+        setAllPlaylists(data);
       } catch (error) {
         console.log(error);
       }
@@ -23,41 +26,41 @@ const PlayListList = () => {
   return (
     <main className="playlist-page">
       <div className="playlist-header">
-      <h1>Your Playlists</h1>
+        <h1>Browse All Playlists</h1>
 
-      <Link to="/playlist/new">
-        <button className="create-btn">+ Create Playlist</button>
-      </Link>
-    </div>
+        <Link to="/playlist/new">
+          <button className="create-btn">+ Create Playlist</button>
+        </Link>
+      </div>
 
-    <div className="playlist-grid">
-      {playlists.length === 0 ? (
-        <p className="empty-message">
-          No playlists yet. Create your first one 🎵
-        </p>
-      ) : (
-        playlists.map((playlist) => (
-          <Link
-            key={playlist._id}
-            to={`/playlist/${playlist._id}`}
-            className="playlist-card"
-          >
-            {playlist.img && (
-              <div className="playlist-image">
-                <img src={playlist.img} alt={playlist.name} />
-              </div>
-            )}
-            <h2>{playlist.name}</h2>
-          </Link>
-        ))
-      )}
-    </div>
-      {playlists.length === 0 ? (
+      {/* <div className="playlist-grid">
+        {playlists.length === 0 ? (
+          <p className="empty-message">
+            No playlists yet. Create your first one 🎵
+          </p>
+        ) : (
+          playlists.map((playlist) => (
+            <Link
+              key={playlist._id}
+              to={`/playlist/${playlist._id}`}
+              className="playlist-card"
+            >
+              {playlist.img && (
+                <div className="playlist-image">
+                  <img src={playlist.img} alt={playlist.name} />
+                </div>
+              )}
+              <h2>{playlist.name}</h2>
+            </Link>
+          ))
+        )}
+      </div> */}
+      {allPlaylists.length === 0 ? (
         <Link to="/playlist/new">
           <button>Create Playlist</button>
         </Link>
       ) : (
-        playlists.map((playlist) => (
+        allPlaylists.map((playlist) => (
           <Link key={playlist._id} to={`/playlist/${playlist._id}`}>
             <article>
               <h2>{playlist.name}</h2>
