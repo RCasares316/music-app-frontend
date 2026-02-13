@@ -13,6 +13,7 @@ const getUserFromToken = () => {
 
 const UserProvider = ({ children }) => {
   const [user, setUser] = useState(getUserFromToken());
+  const [toggle, setToggle] = useState(false);
   const [playlists, setPlaylists] = useState([]);
 
   useEffect(() => {
@@ -21,10 +22,10 @@ const UserProvider = ({ children }) => {
       setPlaylists(playlistsData);
     };
     if (user?._id) fetchPlaylists();
-  }, [user]);
+  }, [user, toggle]);
 
   return (
-    <UserContext.Provider value={{ user, setUser, playlists }}>
+    <UserContext.Provider value={{ user, setUser, playlists, setToggle }}>
       {children}
     </UserContext.Provider>
   );

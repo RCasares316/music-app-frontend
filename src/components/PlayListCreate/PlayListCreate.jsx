@@ -1,5 +1,5 @@
-import React from "react";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { UserContext } from "../../contexts/UserContext.jsx";
 import { useNavigate } from "react-router";
 import { createPlaylist } from "../../services/playlist";
 import "./PlayListCreate.css";
@@ -11,6 +11,7 @@ const PlayListCreate = () => {
     img: "",
   });
 
+  const {setToggle} = useContext(UserContext)
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -24,6 +25,7 @@ const PlayListCreate = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await createPlaylist(formData);
+    setToggle(prev => !prev)
     navigate("/playlist");
   };
   return (
