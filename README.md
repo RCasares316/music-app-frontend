@@ -4,9 +4,18 @@ This is the frontend for the music application.
 It is a React-based single-page application that allows users to explore music, create and manage playlists, and interact with their personal library through a fast and responsive interface.
 The client communicates with a custom REST API for authentication and playlist persistence while dynamically loading track data from an external music service.
 
-### Live Application
+### Deploy Application
+(Link)
 
-(Insert deployed frontend link)
+
+### Run Application Locally
+Frontend:
+http://localhost:5173
+
+Backend:
+http://localhost:3000
+
+Both must run simultaneously.
 
 # Overview
 
@@ -40,6 +49,8 @@ CSS – Layout, styling, and responsive design
 Axios / Fetch – API communication
 
 Vite / Create React App – Frontend tooling
+
+Nectify -Deployment & hosting
 
 # Core Features
 ### Authentication Flow
@@ -140,9 +151,9 @@ npm run dev
 
 # Author
 ### Jullian Guerrero
-### JimmieAlice Williams
+### Jimmiealice Williams
 ### Richard Casares
-GitHub: (your link)
+GitHub: [Link](https://github.com/RCasares316/music-app-frontend)
 
 # Reflections
 Building the frontend strengthened our understanding of React application structure, especially managing asynchronous data, protecting routes, and keeping the UI synchronized with backend state.
