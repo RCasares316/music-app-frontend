@@ -50,6 +50,8 @@ Axios / Fetch – API communication
 
 Vite / Create React App – Frontend tooling
 
+Nectify -Deployment & hosting
+
 # Core Features
 ### Authentication Flow
 Users can sign up and log in
