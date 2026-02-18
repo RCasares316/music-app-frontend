@@ -7,13 +7,6 @@ The client communicates with a custom REST API for authentication and playlist p
 ### Deploy Application
 [Music Snippets](https://music-snippets.netlify.app/playlist/6992331cd743d194726a0f7f)
 
-
-### Run Application Locally
-Frontend:
-http://localhost:5173
-
-Both must run simultaneously.
-
 # Overview
 
 The frontend provides an intuitive user experience where authenticated users can:
@@ -147,7 +140,7 @@ npm install
 npm run dev
 
 # Author
-### Jullian Guerrero
+### Julien Guerrero
 ### Jimmiealice Williams
 ### Richard Casares
 GitHub: [Link](https://github.com/RCasares316/music-app-frontend)
