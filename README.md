@@ -5,7 +5,7 @@ It is a React-based single-page application that allows users to explore music, 
 The client communicates with a custom REST API for authentication and playlist persistence while dynamically loading track data from an external music service.
 
 ### Deploy Application
-[Music Snippets](https://music-snippets.netlify.app/playlist/6992331cd743d194726a0f7f)
+[Music Snippets](https://music-snippets.netlify.app/)
 
 # Overview
 
